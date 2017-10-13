@@ -1,0 +1,292 @@
+/* 
+    1. General styling 
+*/
+
+.arui-container {
+    position: relative;
+}
+
+.arui-selected {
+    background-color: teal;
+}
+
+.arui-current {
+    background-color: #ccc;
+}
+
+.arui-hightlight {
+    background-color: #a0cfec;
+}
+
+/* 
+    2. Text styling 
+*/
+
+.arui-text {
+    position: relative;
+    
+    /* 2.1 Input field */
+    &-input {
+        box-sizing: border-box;
+        display: block;
+        font-size: 1.8em;
+        line-height: 1;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        width: 100%;
+    }
+    
+    /* 2.2 Animated label */
+    &-label {
+        color: #666;
+        position: absolute;
+        transition: font-size 0.5s, top 0.5s, left 0.5s;
+        
+        &--blur {
+            @extend .arui-text-label;
+            font-size: 1.8em;
+            left: 20px;
+            top: 10px;
+        }
+        &--focus {
+            @extend .arui-text-label;
+            font-size: 0;
+            left: 0;
+            top: 0;
+        }
+    }
+    
+    /* 2.3 Animated bar */
+    &-anim-bar {
+        background-color: teal;
+        height: 5px;
+        position: absolute;
+        transition: width 0.5s;
+        z-index: 2;
+        
+        &--blur {
+            @extend .arui-text-anim-bar;
+            width: 0;
+        }
+        &--focus {
+            @extend .arui-text-anim-bar;
+            width: 100%;
+        }
+    }
+    
+
+}
+/* 
+    3. Selectors styling 
+*/
+
+.arui-flex-selector {
+    display: inline-block;
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+/* 
+    4. Pickers styling 
+*/
+
+.arui-date-picker, .arui-time-picker {
+    position: relative;
+
+    .arui-picker-button {
+        background-color: teal;
+        color: white;
+        cursor: pointer;
+        font-size: 1.4rem;
+        line-height: 1;
+        padding: 15px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 3;
+    }
+}
+
+.arui-picker-widget {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 10;
+}
+
+.arui-calendar {
+    background-color: white;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 7 * 3rem;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
+
+    &-controls {
+        background-color: teal;
+        background: #00837f; /* Old browsers */
+        background: -moz-linear-gradient(top, #00837f 0%, #059489 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #00837f 0%,#059489 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #00837f 0%,#059489 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00837f', endColorstr='#059489',GradientType=0 ); /* IE6-9 */
+        border: 1px solid teal;
+        height: 3rem;
+        font-size: 1.6rem;
+        line-height: 3rem;
+
+        &-prev {
+            cursor: pointer;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 3rem;
+            border-right: 1px solid #666;
+        }
+        &-next {
+            cursor: pointer;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 3rem;
+            border-left: 1px solid #666;
+        }
+        &-special {
+            display: inline-block;
+            width: calc(100% - (2 * 30px));
+            cursor: pointer;
+        }
+    }
+    &-headers {
+        border: 1px solid teal;
+        border-top: 0;
+    }
+    &-header {
+        display: inline-block;
+        width: calc(100% / 7);
+        height: 2rem;
+        line-height: 2rem;
+        text-align: center;
+    }
+    &-body {
+        border: 1px solid teal;
+        border-top: 0;
+    }
+    &-day {
+        border-left: 1px solid #999;
+        border-bottom: 1px solid #999;
+        font-size: 1.4rem;
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        width: calc(100% / 7);
+        height: 3rem;
+        vertical-align: top;
+        padding: 0.8rem 0;
+        cursor: pointer;
+
+        &.active:hover {
+            @extend .arui-hightlight;
+        }
+
+        &:nth-child(7n - 6) {
+            border-left: 0;
+        }
+
+        &:nth-child(36), &:nth-child(37), &:nth-child(38), &:nth-child(39), &:nth-child(40), &:nth-child(41), &:nth-child(42) {
+            border-bottom: 0;
+        }
+    }
+    &-month {
+        border-left: 1px solid #999;
+        border-bottom: 1px solid #999;
+        font-size: 1.4rem;
+        box-sizing: border-box;
+        display: inline-block;
+        position: relative;
+        width: 33%;
+        height: 4rem;
+        vertical-align: top;
+        padding: 0.8rem 0;
+        cursor: pointer;
+
+        &:hover {
+            @extend .arui-hightlight;
+        }
+
+        &:nth-child(10), &:nth-child(11), &:nth-child(12) {
+            border-bottom: 0;
+        }
+
+        &:nth-child(3n - 2) {
+            border-left: 0;
+        }
+
+        &:nth-child(3n) {
+            width: 34%;
+        }
+    }
+}
+
+/*
+    5. Button styling
+*/
+
+.arui-bored-button {
+    position: relative;
+
+    &--border {
+        background-color: black;
+        position: absolute;
+    }
+    &--left {
+        @extend .arui-bored-button--border;   
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        height: 0;
+        transition: height .1s .5s;
+    }
+
+    &--top {
+        @extend .arui-bored-button--border;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        transition: width .2s .3s;
+    }
+
+    &--right {
+        @extend .arui-bored-button--border;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 0;
+        transition: height .1s .2s;
+    }
+
+    &--bottom {
+        @extend .arui-bored-button--border;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 1px;
+        transition: width .2s;
+    }
+
+    &:hover {
+        .arui-bored-button--left {
+        height: 100%;
+        transition: height 0.1s;
+        }
+        .arui-bored-button--top {
+        width: 100%;
+        transition: width 0.2s 0.1s;
+        }
+        .arui-bored-button--right {
+        height: 100%;
+        transition: height 0.1s 0.3s;
+        }
+        .arui-bored-button--bottom {
+        width: 100%;
+        transition: width 0.2s 0.4s;
+        }
+    }  
+}

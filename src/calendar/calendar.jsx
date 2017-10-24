@@ -3,6 +3,7 @@ import React from 'react';
 import CalendarViewDays from './calendar-view-days';
 import CalendarViewMonths from './calendar-view-months';
 
+// Todo - Create npm module for the times file and import it that way
 import Times from '../../util/times';
 
 export class Calendar extends React.Component {

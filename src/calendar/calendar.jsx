@@ -11,35 +11,54 @@ export class Calendar extends React.Component {
     constructor(props) {
         super(props);
 
-        let { type = 'single', value = null } = this.props;
-        let displayMonth = new Date().getMonth(), displayYear = new Date().getFullYear();
+        let display = this.getInitialDisplay();
 
+        // Bind class functions
         this.handleSelectDate = this.handleSelectDate.bind(this);
         this.handleSwitchView = this.handleSwitchView.bind(this);
         this.handleChangeMonth = this.handleChangeMonth.bind(this);
         this.validateProps = this.validateProps.bind(this);
 
+        // Set initial state
+        this.state = {
+            displayMonth: display.month,
+            displayYear: display.year,
+            displayView: 'days'
+        }
+    }
+
+    /**
+     * Return the displayed month and displayed year for the initial rendering. 
+     * This is based on the value for the picker, or set to the current date otherwise.
+     * 
+     * @return {{year: number, month: number}} - Object containing the displayed month and year
+     */
+    getInitialDisplay() {
+        let { type = 'single', value = null } = this.props;
+
+        let month = new Date().getMonth(), 
+            year = new Date().getFullYear();
+
         // Try to set the initial view of the calendar on a selected day
         if(type === 'multiple' && value.length > 0) {
-            displayMonth = Times.getLocalISOMonth(value[0]);
-            displayYear = Times.getLocalISOYear(value[0]);
+            month = Times.getLocalISOMonth(value[0]);
+            year = Times.getLocalISOYear(value[0]);
         } else if(type === 'range') {
             if(value.start !== null) {
-                displayMonth = Times.getLocalISOMonth(value.start);
-                displayYear = Times.getLocalISOYear(value.start);
+                month = Times.getLocalISOMonth(value.start);
+                year = Times.getLocalISOYear(value.start);
             } else if(value.end !== null) {
-                displayMonth = Times.getLocalISOMonth(value.end);
-                displayYear = Times.getLocalISOYear(value.end);
+                month = Times.getLocalISOMonth(value.end);
+                year = Times.getLocalISOYear(value.end);
             }
         } else if(type === 'single' && value !== null) {
-            displayMonth = Times.getLocalISOMonth(value);
-            displayYear = Times.getLocalISOYear(value);
+            month = Times.getLocalISOMonth(value);
+            year = Times.getLocalISOYear(value);
         }
 
-        this.state = {
-            displayMonth,
-            displayYear,
-            displayView: 'days'
+        return {
+            month,
+            year
         }
     }
 
@@ -91,7 +110,12 @@ export class Calendar extends React.Component {
         }
     }
 
-    handleChangeMonth(newMonth) {
+    /**
+     * Change the displayed month
+     * 
+     * @param {number} newMonth
+     */
+    handleChangeMonth(newMonth = this.state.displayMonth) {
         console.log('clicked: ' + newMonth);
         if(newMonth === -1) {
             this.setState({
@@ -110,10 +134,16 @@ export class Calendar extends React.Component {
         }
     }
 
+    /**
+     * Change the displayed view.
+     * 
+     * @param {string} displayView - The view to display. Can be days, months or years
+     * @param {number} value - The new month or year to display. Depends on the displayView.
+     */
     handleSwitchView(displayView = 'days', value) {
-        let displayMonth = this.state.displayMonth, displayYear = this.state.displayYear;
+        let { displayMonth, displayYear } = this.state;
         
-        if(value) {
+        if(value !== undefined) {
             if(displayView === 'days') {
                 displayMonth = value;
             }

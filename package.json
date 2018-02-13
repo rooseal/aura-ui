@@ -19,6 +19,8 @@
   },
   "homepage": "https://gitlab.com/roosal/react-ui-components#README",
   "dependencies": {
+    "ar-time": "^0.2.0",
+    "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },

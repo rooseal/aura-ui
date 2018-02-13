@@ -1,3 +1,7 @@
+body {
+    font-size: 10px;
+}
+
 /* 
     1. General styling 
 */
@@ -84,26 +88,37 @@
     display: inline-block;
     height: 45px;
     margin-bottom: 20px;
+    width: 100%;
+
+    .arui-text-option {
+        box-sizing: border-box;
+        display: block;
+        font-size: 1.8em;
+        line-height: 1;
+        padding: 10px 20px;
+        width: 100%;
+        border: 1px solid darkgray;
+    }
 }
 
 /* 
     4. Pickers styling 
 */
 
-.arui-date-picker, .arui-time-picker {
+.arui-date-picker, .arui-time-picker, .arui-flex-selector {
     position: relative;
 
     .arui-picker-button {
         background-color: teal;
         color: white;
         cursor: pointer;
-        font-size: 1.4rem;
-        line-height: 1;
-        padding: 15px;
+        font-size: 2em;
+        line-height: 1.25;
         position: absolute;
         right: 0;
         top: 0;
         z-index: 3;
+        padding: 10px;
     }
 }
 
@@ -137,20 +152,23 @@
             cursor: pointer;
             box-sizing: border-box;
             display: inline-block;
-            width: 3rem;
+            padding: 0 9px;
+            width: 30px;
             border-right: 1px solid #666;
         }
         &-next {
             cursor: pointer;
             box-sizing: border-box;
             display: inline-block;
-            width: 3rem;
+            padding: 0 9px;
+            width: 30px;
             border-left: 1px solid #666;
         }
         &-special {
             display: inline-block;
             width: calc(100% - (2 * 30px));
             cursor: pointer;
+            text-align: center;
         }
     }
     &-headers {
@@ -180,6 +198,7 @@
         vertical-align: top;
         padding: 0.8rem 0;
         cursor: pointer;
+        text-align: center;
 
         &.active:hover {
             @extend .arui-hightlight;
@@ -193,7 +212,7 @@
             border-bottom: 0;
         }
     }
-    &-month {
+    &-month, &-year {
         border-left: 1px solid #999;
         border-bottom: 1px solid #999;
         font-size: 1.4rem;
@@ -205,6 +224,7 @@
         vertical-align: top;
         padding: 0.8rem 0;
         cursor: pointer;
+        text-align: center;
 
         &:hover {
             @extend .arui-hightlight;

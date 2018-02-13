@@ -2,9 +2,10 @@ import React from 'react';
 
 import CalendarViewDays from './calendar-view-days';
 import CalendarViewMonths from './calendar-view-months';
+import CalendarViewYears from './calendar-view-years';
 
-// Todo - Create npm module for the times file and import it that way
-import Times from '../../util/times';
+// Todo - Create npm module for the file and import it that way
+import { getLocalISOMonth, getLocalISOYear, normalizeDate } from 'ar-time';
 
 export class Calendar extends React.Component {
 
@@ -41,19 +42,19 @@ export class Calendar extends React.Component {
 
         // Try to set the initial view of the calendar on a selected day
         if(type === 'multiple' && value.length > 0) {
-            month = Times.getLocalISOMonth(value[0]);
-            year = Times.getLocalISOYear(value[0]);
+            month = getLocalISOMonth(value[0]);
+            year = getLocalISOYear(value[0]);
         } else if(type === 'range') {
             if(value.start !== null) {
-                month = Times.getLocalISOMonth(value.start);
-                year = Times.getLocalISOYear(value.start);
+                month = getLocalISOMonth(value.start);
+                year = getLocalISOYear(value.start);
             } else if(value.end !== null) {
-                month = Times.getLocalISOMonth(value.end);
-                year = Times.getLocalISOYear(value.end);
+                month = getLocalISOMonth(value.end);
+                year = getLocalISOYear(value.end);
             }
         } else if(type === 'single' && value !== null) {
-            month = Times.getLocalISOMonth(value);
-            year = Times.getLocalISOYear(value);
+            month = getLocalISOMonth(value);
+            year = getLocalISOYear(value);
         }
 
         return {
@@ -75,12 +76,12 @@ export class Calendar extends React.Component {
         }
         
         if(type === 'single') { // Valid values for single type of calendar are Date object or a string in "YYYY-mm-DD" format
-            this.value = Times.normalizeDate(value);
+            this.value = normalizeDate(value);
         } else if(type === 'multiple') { // Valid values for multiple are an array of the single type values
             if(Object.prototype.toString.call(value) === "[object Array]") {
                 if(value.length > 0) {
                     this.value = value.reduce((validValues, currentValue) => {
-                        let tmp = Times.normalizeDate(currentValue);
+                        let tmp = normalizeDate(currentValue);
                         if(tmp) {
                             validValues.push(tmp);
                         }
@@ -92,8 +93,8 @@ export class Calendar extends React.Component {
             }
         } else if(type === 'range') { // Valid value is an object with start and end properties containing a single type value
             if(value.start !== undefined && value.end !== undefined) {
-                value.start = Times.normalizeDate(value.start);
-                value.end = Times.normalizeDate(value.end);
+                value.start = normalizeDate(value.start);
+                value.end = normalizeDate(value.end);
                 this.value = value;
             } else {
                 this.value = { start: null, end: null };
@@ -180,6 +181,12 @@ export class Calendar extends React.Component {
                     onChange={this.handleSelectDate}
                     onSwitchView={this.handleSwitchView}
                 />
+                }
+                { this.state.displayView === 'years' &&
+                    <CalendarViewYears
+                        visibleYear = { this.state.displayYear }
+                        onSwitchView = { this.handleSwitchView }
+                    />
                 }
             </div>
         )

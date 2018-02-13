@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Times from '../../util/times';
+import { convertDay, getDaysInMonth, getDaysAsArray, translations, toLocalISO, createLocalISO} from 'ar-time';
 
 import CalendarControls from './calendar-controls';
 
@@ -15,8 +15,8 @@ export class CalendarViewDays extends React.Component {
 
     filloutDaysArray() {
         let {visibleMonth, visibleYear} = this.props,
-            firstDay = Times.convertDay(new Date(visibleYear, visibleMonth, 1).getDay()), 
-            lastDay = Times.convertDay(new Date(visibleYear, visibleMonth, Times.getDaysInMonth(visibleYear, visibleMonth)).getDay()),
+            firstDay = convertDay(new Date(visibleYear, visibleMonth, 1).getDay()), 
+            lastDay = convertDay(new Date(visibleYear, visibleMonth, getDaysInMonth(visibleYear, visibleMonth)).getDay()),
             prependArray = [],
             appendArray = [];
 
@@ -30,12 +30,13 @@ export class CalendarViewDays extends React.Component {
             appendArray.push('');
         }
 
-        return prependArray.concat(Times.getDaysAsArray(visibleYear, visibleMonth), appendArray);
+        return prependArray.concat(getDaysAsArray(visibleYear, visibleMonth), appendArray);
     }
 
     isSelectedDay(dateString) {
         let {value} = this.props;
 
+        // Value is an array of multiple dates
         if(Object.prototype.toString.call(value) === "[object Array]") {
             if(value.indexOf(dateString) !== -1) {
                 return true;
@@ -44,6 +45,7 @@ export class CalendarViewDays extends React.Component {
             }
         }
 
+        // Value is a range of dates
         if(value.start !== undefined && value.end !== undefined) {
             if(value.start !== null && value.end !== null) {
                 let startDate = new Date(value.start), endDate = new Date(value.end), stepDate = new Date(dateString); 
@@ -59,6 +61,7 @@ export class CalendarViewDays extends React.Component {
             }
         }
 
+        // Value is a single date
         if(value === dateString) {
             return true;
         }
@@ -74,20 +77,20 @@ export class CalendarViewDays extends React.Component {
         return (
             <div>
                 <CalendarControls 
-                    text={Times.monthStrings[visibleMonth] + ' ' + visibleYear} 
+                    text={translations.getMonths()[visibleMonth] + ' ' + visibleYear} 
                     onPrevious={this.handleChangeMonth.bind(this, -1)} 
                     onNext={this.handleChangeMonth.bind(this, +1)} 
                     onSpecial={() => this.props.onSwitchView('months')}
                 />
 
                 <div className="arui-calendar-headers">
-                    { Times.daysInWeekStrings.map(header => <div key={header} className="arui-calendar-header">{header}</div>)}
+                    { translations.getWeekdays({short: true}).map(header => <div key={header} className="arui-calendar-header">{header}</div>)}
                 </div>
 
                 <div className="arui-calendar-body">
                     { this.filloutDaysArray().map((day, i) => {
-                        let today = Times.toLocalISO(new Date()),  
-                            currentStep = Times.createLocalISO(visibleYear, visibleMonth, day),
+                        let today = toLocalISO(new Date()),
+                            currentStep = createLocalISO(visibleYear, visibleMonth, day),
                             isSelected = false, isCurrent = false;
 
                         if( currentStep === today) {

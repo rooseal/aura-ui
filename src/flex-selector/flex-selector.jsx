@@ -25,6 +25,8 @@ export class FlexSelector extends React.Component {
     }
 
     render() {
+        let {items, value} = this.props;
+        
         return (
             <div className="flex-selector">
                 <div className="selection cf" onClick={this.handleToggle} style={{cursor: 'pointer'}}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TextLine from './text-line';
 import Calendar from './calendar/calendar';
@@ -21,6 +22,19 @@ export class DatePicker extends React.Component {
     handleChange(value) {
         value = this.formatValue(value);
 
+        if(this.props.onChange) {
+            this.props.onChange(value);
+        } else {
+            this.setState({
+                value
+            });
+        }
+    }
+
+    handleToggleCalendar() {
+        this.setState({
+            open: !this.state.open
+        });
         if(this.props.onChange) {
             this.props.onChange(value);
         } else {
@@ -70,6 +84,11 @@ export class DatePicker extends React.Component {
         )
     }
 
+}
+
+DatePicker.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
 }
 
 export default DatePicker;

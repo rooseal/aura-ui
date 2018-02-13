@@ -31,3 +31,11 @@ This is the simple text input. You can choose between a couple of types for this
 <hr>
 
 This module also contains a small validation library to validate the input of the components. If desired you can use these in your project in conjunction with the validation of the components.
+
+
+TODO - Timepicker masking
+       Timepicker widget
+       Flex selector - default styling
+       Datepicker next prev buttons for years
+       Datepicker masking
+       Selector group by

@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path')
+var fs = require('fs')
 
 module.exports = {
   entry: [
@@ -29,23 +30,22 @@ module.exports = {
     contentBase: path.resolve(__dirname, "dist"),
     publicPath: '/',
     before(app) {
+      // Print requests to console
+      app.use((req, res, next) => {
+        console.log(`${req.protocol} |  ${req.method} ${req.path} request from ${req.ip}`)
+        next()
+      })
+
+      // Get list resource
       app.get('/list', (req, res) => {
-        res.json({
-          data: {
-            normal: [
-                'White widow',
-                'Northern Light',
-                'Super skunk',
-                'K2',
-                'Snow White',
-                'Orange Budd',
-            ],
-            haze: [
-                'Cheese',
-                'Power plant',
-                'Silver Haze',
-                'Amnesia'
-            ]
+        data: fs.readFile('./data/list.json', (err, content) => {
+          if(err) console.error(err)
+          try {
+            res.json({
+              data: JSON.parse(content)
+            })
+          } catch(error) {
+            res.end(500)
           }
         })
       })

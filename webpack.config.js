@@ -27,6 +27,28 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
-    publicPath: '/'
+    publicPath: '/',
+    before(app) {
+      app.get('/list', (req, res) => {
+        res.json({
+          data: {
+            normal: [
+                'White widow',
+                'Northern Light',
+                'Super skunk',
+                'K2',
+                'Snow White',
+                'Orange Budd',
+            ],
+            haze: [
+                'Cheese',
+                'Power plant',
+                'Silver Haze',
+                'Amnesia'
+            ]
+          }
+        })
+      })
+    }
   }
 };

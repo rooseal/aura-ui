@@ -5,6 +5,7 @@ import DatePicker from '../../src/date-picker';
 import TimePicker from '../../src/time-picker';
 import TextLine from '../../src/text-line';
 import TextSelector from '../../src/flex-selector/text-selector';
+import KeyHandler from '../../src/key-control/key-handler';
 
 import '../../src/css/ui-comp.scss';
 
@@ -17,7 +18,7 @@ class App extends React.Component {
             text1: '',
             date1: null,
             time1: null,
-            selection: null
+            selection: ''
         }
         
         this.handleChangeText = this.handleChangeText.bind(this);
@@ -26,19 +27,16 @@ class App extends React.Component {
         this.handleChangeSelection = this.handleChangeSelection.bind(this);
     }
 
+    componentDidMount() {
+        this.getItems()
+    }
+
     getItems() {
-        return [
-            'White widow',
-            'Cheese',
-            'Northern Light',
-            'Super skunk',
-            'Power plant',
-            'K2',
-            'Orange Budd',
-            'Snow White',
-            'Silver Haze',
-            'Amnesia'
-        ]
+        fetch('/list')
+            .then(response => response.json())
+            .then(data => this.setState({
+                items: data.data
+            }))
     }
 
     handleChangeText(value = '') {
@@ -71,7 +69,7 @@ class App extends React.Component {
                 <DatePicker value={this.state.date1} onChange={this.handleChangeDate} />
                 <TimePicker value={this.state.time1} onChange={this.handleChangeTime} />
                 <TextLine value={this.state.text1} onChange={this.handleChangeText} />
-                <TextSelector value={this.state.selection} items={this.getItems()} onChange={this.handleChangeSelection} />
+                <TextSelector value={this.state.selection} items={this.state.items || []} onChange={this.handleChangeSelection} />
             </div>
         )
     }

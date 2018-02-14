@@ -1,5 +1,7 @@
 body {
     font-size: 10px;
+    user-select: none;
+    font-family: sans-serif;
 }
 
 /* 
@@ -98,6 +100,9 @@ body {
         padding: 10px 20px;
         width: 100%;
         border: 1px solid darkgray;
+        &:hover {
+            @extend .arui-hightlight;
+        }
     }
 }
 

@@ -1,7 +1,13 @@
-import BoredButton from './bored-button';
-import DatePicker from './bored-button';
-import FlexSelector from './bored-button';
-import TextLine from './bored-button';
-import TimePicker from './bored-button';
+import BoredButton from './bored-button'
+import DatePicker from './date-picker'
+import FlexSelector from './flex-selector'
+import TextLine from './text-line'
+import TimePicker from './time-picker'
 
-export { BoredButton, DatePicker, FlexSelector, TextLine, TimePicker };
+export { 
+  BoredButton,
+  DatePicker,
+  FlexSelector,
+  TextLine,
+  TimePicker
+}

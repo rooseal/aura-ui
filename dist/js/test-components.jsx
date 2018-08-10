@@ -1,18 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import DatePicker from '../../src/date-picker';
-import TimePicker from '../../src/time-picker';
-import TextLine from '../../src/text-line';
-import TextSelector from '../../src/flex-selector/text-selector';
-import KeyHandler from '../../src/key-control/key-handler';
+// import DatePicker from '../../src/date-picker'
+// import TimePicker from '../../src/time-picker'
+// import TextLine from '../../src/text-line'
+import TextSelector from '../../src/flex-selector/text-selector'
+// import KeyHandler from '../../src/key-control/key-handler'
+import List from '../../src/flex-selector/list'
+import BoredButton from '../../src/bored-button'
 
-import '../../src/css/ui-comp.scss';
-
+import '../../src/css/ui-comp.scss'
+/*
 class App extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             text1: '',
@@ -21,10 +23,10 @@ class App extends React.Component {
             selection: ''
         }
         
-        this.handleChangeText = this.handleChangeText.bind(this);
-        this.handleChangeDate = this.handleChangeDate.bind(this);
-        this.handleChangeTime = this.handleChangeTime.bind(this);
-        this.handleChangeSelection = this.handleChangeSelection.bind(this);
+        this.handleChangeText = this.handleChangeText.bind(this)
+        this.handleChangeDate = this.handleChangeDate.bind(this)
+        this.handleChangeTime = this.handleChangeTime.bind(this)
+        this.handleChangeSelection = this.handleChangeSelection.bind(this)
     }
 
     componentDidMount() {
@@ -74,5 +76,37 @@ class App extends React.Component {
         )
     }
 }
+*/
 
-ReactDOM.render(<App />, document.getElementById('react-app'));
+class TestList extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            
+        }
+
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(value) {
+        this.setState({
+            listItem: value
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <TextSelector list={{group1: ['banana', 'strawberry', 'berries', 'tomato']}} value={this.state.listItem} onChange={this.handleChange} />
+                <div>
+                    <h1>{this.state.listItem}</h1>
+                </div>
+                <BoredButton>Hello</BoredButton>
+            </div>
+        )
+    }
+}
+    
+    // <List list={{group1: ['banana', 'strawberry', 'berries', 'tomato']}} value={this.state.listValue} onChange={this.handleChange} />
+    ReactDOM.render(<TestList />, document.getElementById('react-app'));

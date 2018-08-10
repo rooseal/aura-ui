@@ -1,5 +1,6 @@
 import React from 'react'
 import TextLine from '../text-line'
+import List from './list'
 
 export class TextSelector extends React.Component {
 
@@ -119,16 +120,17 @@ export class TextSelector extends React.Component {
     }
 
     render () {
-        let { items, value } = this.props
+        let { list, value } = this.props
         let { search, showAll, open } = this.state
-        let groups = items
+        
+        // let groups = items
 
         // Create an object with only group the array that was passed
-        if(Array.isArray(items)) {
-            groups = {
-                default: items
-            }
-        }
+        // if(Array.isArray(items)) {
+        //     groups = {
+        //         default: items
+        //     }
+        // }
         
         return (
             <div className="arui-flex-selector">
@@ -137,53 +139,7 @@ export class TextSelector extends React.Component {
                     <div className="arui-picker-button" onClick={this.handleToggle}>&#x25BC;</div>
                 </div>
                 { open &&
-                    <div className="items" style={{position: 'relative', zIndex: '2'}}>
-                        {
-                            Object.keys(groups)
-                                .map((group, i) => {
-                                    console.log(group, i);
-                                    return ([
-                                        i > 0 && group !== 'default' && showAll &&
-                                            <div style={{height: '20px', width: '100%', backgroundColor: 'darkgray'}}>&nbsp;</div>
-                                        ,
-                                        groups[group]
-                                            .sort()
-                                            .filter(item => {
-                                                // If showAll is active, don't filter the items
-                                                if(showAll) return true
-                                                // Normalize the item
-                                                if(typeof item === 'string') {
-                                                    item = {
-                                                        value: item,
-                                                        content: item
-                                                    }
-                                                }
-                                                // Filter the items
-                                                if(item.content.toLowerCase().indexOf(search.toLowerCase()) === 0) {
-                                                    return true
-                                                } else {
-                                                    return false
-                                                }
-                                            })
-                                            .map((item, i) => {
-                                                // Normalize the item
-                                                if(typeof item === 'string') {
-                                                    item = {
-                                                        value: item,
-                                                        content: item
-                                                    }
-                                                }
-                                                return (
-                                                    <div key={item.value} className={`arui-text-option ${i+1===this.state.hightlighted ? 'arui-hightlight' : ''}`} onClick={this.handleChangeSelection.bind(this, item.value)} style={{cursor: 'pointer', margin: '1px 0', boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.5)'}}>
-                                                        {item.content}
-                                                    </div>
-                                                )
-                                            })
-                                    ])
-                                })
-
-                        }
-                    </div>
+                    <List filter={search} list={list} value={value} onChange={this.handleChangeSelection} />
                 }
             </div>
         )
@@ -212,4 +168,24 @@ export default TextSelector
  * Options is an object with some options to configure the selector
  * Properties = search: <boolean> (default = true)
  * 
+*/
+
+/*
+.filter(item => {
+    // If showAll is active, don't filter the items
+    if(showAll) return true
+    // Normalize the item
+    if(typeof item === 'string') {
+        item = {
+            value: item,
+            content: item
+        }
+    }
+    // Filter the items
+    if(item.content.toLowerCase().indexOf(search.toLowerCase()) === 0) {
+        return true
+    } else {
+        return false
+    }
+})
 */

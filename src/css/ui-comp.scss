@@ -91,18 +91,21 @@ body {
     height: 45px;
     margin-bottom: 20px;
     width: 100%;
+}
 
-    .arui-text-option {
-        box-sizing: border-box;
-        display: block;
-        font-size: 1.8em;
-        line-height: 1;
-        padding: 10px 20px;
-        width: 100%;
-        border: 1px solid darkgray;
-        &:hover {
-            @extend .arui-hightlight;
-        }
+.arui-text-option {
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.8em;
+    line-height: 1;
+    padding: 10px 20px;
+    width: 100%;
+    border: 1px solid darkgray;
+    cursor: pointer; 
+    margin: 1px 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    &:hover {
+        @extend .arui-hightlight;
     }
 }
 
@@ -255,6 +258,10 @@ body {
 
 .arui-bored-button {
     position: relative;
+    background-color: teal;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 16px;
 
     &--border {
         background-color: black;
@@ -264,7 +271,7 @@ body {
         @extend .arui-bored-button--border;   
         bottom: 0;
         left: 0;
-        width: 1px;
+        width: 2px;
         height: 0;
         transition: height .1s .5s;
     }
@@ -274,7 +281,7 @@ body {
         top: 0;
         left: 0;
         width: 0;
-        height: 1px;
+        height: 2px;
         transition: width .2s .3s;
     }
 
@@ -282,7 +289,7 @@ body {
         @extend .arui-bored-button--border;
         top: 0;
         right: 0;
-        width: 1px;
+        width: 2px;
         height: 0;
         transition: height .1s .2s;
     }
@@ -292,7 +299,7 @@ body {
         bottom: 0;
         right: 0;
         width: 0;
-        height: 1px;
+        height: 2px;
         transition: width .2s;
     }
 

@@ -1,15 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import injectSheet, { ThemeProvider } from 'react-jss'
+
 // import DatePicker from '../../src/date-picker'
 // import TimePicker from '../../src/time-picker'
-// import TextLine from '../../src/text-line'
-import TextSelector from '../../src/flex-selector/text-selector'
+// import TextSelector from '../../src/flex-selector/text-selector'
 // import KeyHandler from '../../src/key-control/key-handler'
-import List from '../../src/flex-selector/list'
-import BoredButton from '../../src/bored-button'
+// import List from '../../src/flex-selector/list'
+// import BoredButton from '../../src/bored-button'
 
-import '../../src/css/ui-comp.scss'
+import { TextLine, TextArea } from '../../src/text'
+
 /*
 class App extends React.Component {
 
@@ -78,35 +80,45 @@ class App extends React.Component {
 }
 */
 
-class TestList extends React.Component {
-    constructor(props) {
-        super(props)
+const styles = theme => ({
+  color: theme.accentColor,
+  fontSize: theme.fontSize
+})
 
-        this.state = {
-            
-        }
+const theme = {
+  accentColor: 'red',
+  fontSize: '16px'
+}
 
-        this.handleChange = this.handleChange.bind(this)
-    }
+const Section = injectSheet(styles)(
+  props => (
+    <div>
+      <TextLine name="Naam" label="Naam" value={props.name} onChange={value => props.onChange('name', value)} />
+      <TextArea name="Text" label="Text" value={props.text} onChange={value => props.onChange('text', value)} />
+    </div>
+  )
+)
 
-    handleChange(value) {
-        this.setState({
-            listItem: value
-        })
-    }
+class ExamplePage extends React.Component {
+  state = {
+    name: '',
+    text: ''
+  }
+  
+  handleChange = (key, value) => {
+    this.setState({
+      [key]: value
+    })
+  }
 
-    render() {
-        return (
-            <div>
-                <TextSelector list={{group1: ['banana', 'strawberry', 'berries', 'tomato']}} value={this.state.listItem} onChange={this.handleChange} />
-                <div>
-                    <h1>{this.state.listItem}</h1>
-                </div>
-                <BoredButton>Hello</BoredButton>
-            </div>
-        )
-    }
+  render() {
+
+    return (        
+      <ThemeProvider theme={theme}>
+        <Section {...this.state} onChange={this.handleChange} />
+      </ThemeProvider>
+    )
+  }
 }
     
-    // <List list={{group1: ['banana', 'strawberry', 'berries', 'tomato']}} value={this.state.listValue} onChange={this.handleChange} />
-    ReactDOM.render(<TestList />, document.getElementById('react-app'));
+ReactDOM.render(<ExamplePage />, document.getElementById('react-app'));

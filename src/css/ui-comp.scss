@@ -25,64 +25,6 @@ body {
 }
 
 /* 
-    2. Text styling 
-*/
-
-.arui-text {
-    position: relative;
-    
-    /* 2.1 Input field */
-    &-input {
-        box-sizing: border-box;
-        display: block;
-        font-size: 1.8em;
-        line-height: 1;
-        margin-bottom: 20px;
-        padding: 10px 20px;
-        width: 100%;
-    }
-    
-    /* 2.2 Animated label */
-    &-label {
-        color: #666;
-        position: absolute;
-        transition: font-size 0.5s, top 0.5s, left 0.5s;
-        
-        &--blur {
-            @extend .arui-text-label;
-            font-size: 1.8em;
-            left: 20px;
-            top: 10px;
-        }
-        &--focus {
-            @extend .arui-text-label;
-            font-size: 0;
-            left: 0;
-            top: 0;
-        }
-    }
-    
-    /* 2.3 Animated bar */
-    &-anim-bar {
-        background-color: teal;
-        height: 5px;
-        position: absolute;
-        transition: width 0.5s;
-        z-index: 2;
-        
-        &--blur {
-            @extend .arui-text-anim-bar;
-            width: 0;
-        }
-        &--focus {
-            @extend .arui-text-anim-bar;
-            width: 100%;
-        }
-    }
-    
-
-}
-/* 
     3. Selectors styling 
 */
 

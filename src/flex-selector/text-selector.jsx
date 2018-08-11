@@ -1,5 +1,5 @@
 import React from 'react'
-import TextLine from '../text-line'
+import { TextLine } from '../text'
 import List from './list'
 
 export class TextSelector extends React.Component {

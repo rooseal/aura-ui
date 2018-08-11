@@ -1,7 +1,7 @@
 import BoredButton from './bored-button'
 import DatePicker from './date-picker'
 import { FlexSelector, TextSelector } from './flex-selector'
-import TextLine from './text-line'
+import { TextLine, TextArea} from './text'
 import TimePicker from './time-picker'
 
 export { 

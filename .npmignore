@@ -1,4 +1,7 @@
-.babelrc
-data
+data/
+node_modules/
+example/
+src/
 package-lock.json
 webpack.config.js
+.babelrc

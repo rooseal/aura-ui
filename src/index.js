@@ -10,5 +10,6 @@ export {
   FlexSelector,
   TextSelector,
   TextLine,
+  TextArea,
   TimePicker
 }

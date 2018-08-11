@@ -1,5 +1,5 @@
-import TextLine from './text-line'
-import TextArea from './text-area'
+import TextLine from './TextLine'
+import TextArea from './TextArea'
 
 export {
   TextLine,

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
-import styles from './text-styles'
+import styles from './textStyles'
 
-class TextLine extends Component {
+class TextArea extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    type: PropTypes.oneOf(['text', 'password']),
+    resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
     style: PropTypes.object,
     label: PropTypes.string.isRequired,
     // Passed in by injectSheet Wrapper
@@ -18,7 +18,7 @@ class TextLine extends Component {
   }
 
   static defaultProps = {
-    type: 'text'
+    resize: 'none'
   }
 
   state = {
@@ -50,7 +50,7 @@ class TextLine extends Component {
 
   render() {
     const { focused } = this.state
-    const { name, value, type, style, label, classes: c, _ref } = this.props
+    const { name, value, style, label, classes: c, _ref, resize } = this.props
 
     return (
       <div className={c.container}>
@@ -58,14 +58,12 @@ class TextLine extends Component {
         <label htmlFor={name} className={!focused && value == '' ? c.labelBlurred : c.labelFocused}>
           {label}
         </label>
-        <input 
-          ref={_ref}
-          id={name}
-          name={name} 
-          type={type} 
+        <textarea 
+          ref={_ref} 
+          id={this.props.name} 
           className={c.input}
-          style={style} 
-          value={value}
+          style={{...this.props.style, resize}} 
+          value={value} 
           onFocus={this.handleFocus} 
           onBlur={this.handleBlur} 
           onChange={this.handleChange} 
@@ -75,7 +73,7 @@ class TextLine extends Component {
   }
 }
 
-const StyledComponent = injectSheet(styles)(TextLine)
+const StyledComponent = injectSheet(styles)(TextArea)
 
 // We forward the ref to the TextLine using the _ref prop. 
 // This is because react-jss doesn't support the forwardRef notation at the moment

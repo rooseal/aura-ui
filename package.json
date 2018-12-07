@@ -20,7 +20,10 @@
   },
   "homepage": "https://gitlab.com/roosal/react-ui-components#README",
   "dependencies": {},
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",

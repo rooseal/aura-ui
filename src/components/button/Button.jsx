@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ style, onClick, children, ...props }) => (
-  <button type="button" style={style} onClick={onClick} {...props}>
+import StyledButton from './StyledButton';
+
+const Button = ({ StyledComp, style, children, ...props }) => (
+  <StyledComp type="button" style={style} {...props}>
     {children}
-  </button>
+  </StyledComp>
 );
 
 Button.propTypes = {
   style: PropTypes.object,
-  onClick: PropTypes.func,
+  StyledComp: PropTypes.func,
 };
 
 Button.defaultProps = {
   style: {},
-  onClick: () => {},
+  StyledComp: StyledButton,
 };
 
 export default Button;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import StyledButton from './StyledButton';
+import StyledAnchorButton from './StyledAnchorButton';
 
 const Submit = ({ StyledComp, style, children, ...props }) => (
-  <StyledComp type="submit" style={style} {...props}>
+  <StyledComp style={style} {...props}>
     {children}
   </StyledComp>
 );
@@ -16,7 +16,7 @@ Submit.propTypes = {
 
 Submit.defaultProps = {
   style: {},
-  StyledComp: StyledButton,
+  StyledComp: StyledAnchorButton,
 };
 
 export default Submit;

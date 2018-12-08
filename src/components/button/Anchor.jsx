@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 
 import StyledAnchorButton from './StyledAnchorButton';
 
-const Submit = ({ StyledComp, style, children, ...props }) => (
+const AnchorButton = ({ StyledComp, style, children, ...props }) => (
   <StyledComp style={style} {...props}>
     {children}
   </StyledComp>
 );
 
-Submit.propTypes = {
+AnchorButton.propTypes = {
   style: PropTypes.object,
   StyledComp: PropTypes.func,
 };
 
-Submit.defaultProps = {
+AnchorButton.defaultProps = {
   style: {},
   StyledComp: StyledAnchorButton,
 };
 
-export default Submit;
+export default AnchorButton;

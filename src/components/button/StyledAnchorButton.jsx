@@ -9,7 +9,10 @@ const StyledAnchorButton = styled.button`
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
   display: inline;
+  font-family: Verdana;
+  font-size: 1em;
   font-weight: bold;
+  padding: 0;
 
   :focus {
     outline: none;

@@ -8,7 +8,7 @@ const StyledButton = styled.button`
   border: 2px solid ${({ theme }) => theme.primary};
   border-radius: 2px;
   color: white;
-  font-family: Verdana;
+  font-family: ${props => props.theme.fontFamily};
   font-size: 0.8em;
   padding: 10px 24px;
 

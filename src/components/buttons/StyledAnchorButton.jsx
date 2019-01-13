@@ -9,7 +9,7 @@ const StyledAnchorButton = styled.button`
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
   display: inline;
-  font-family: Verdana;
+  font-family: ${props => props.theme.fontFamily};
   font-size: 1em;
   font-weight: bold;
   padding: 0;

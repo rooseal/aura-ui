@@ -10,7 +10,7 @@ const StyledButton = styled.a`
   color: white;
   cursor: default;
   display: inline-block;
-  font-family: Verdana;
+  font-family: ${props => props.theme.fontFamily};
   font-size: 0.8em;
   padding: 10px 24px;
 

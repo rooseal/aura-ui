@@ -6,7 +6,7 @@ import teal from '../../css/themes/teal';
 const StyledAnchor = styled.a`
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
-  font-family: Verdana;
+  font-family: ${props => props.theme.fontFamily};
   font-size: 1em;
   font-weight: bold;
   padding: 0;

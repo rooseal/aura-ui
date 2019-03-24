@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import teal from '../../../css/themes/teal';
 
 const StyledItem = styled.button`
-  background-color: white;
+  background-color: transparent;
   border: 0;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.textPrimary};
   font-family: Verdana;
   font-size: 0.8em;
   padding: 10px 24px;

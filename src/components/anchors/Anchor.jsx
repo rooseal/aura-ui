@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import StyledAnchor from './StyledAnchor';
 
-const Button = ({ StyledComp, target, rel, style, children, ...props }) => (
+const Anchor = ({ StyledComp, target, rel, style, children, ...props }) => (
   <StyledComp
     style={style}
     rel={target === '_blank' && rel === undefined ? 'noopener noreferrer' : rel}
@@ -14,14 +14,18 @@ const Button = ({ StyledComp, target, rel, style, children, ...props }) => (
   </StyledComp>
 );
 
-Button.propTypes = {
+Anchor.propTypes = {
   style: PropTypes.object,
   StyledComp: PropTypes.func,
 };
 
-Button.defaultProps = {
+Anchor.defaultProps = {
   style: {},
   StyledComp: StyledAnchor,
 };
 
-export default Button;
+Anchor.preview = {
+  children: 'Link Text',
+};
+
+export default Anchor;

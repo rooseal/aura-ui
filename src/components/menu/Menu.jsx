@@ -5,8 +5,11 @@ import useList from '../list/useList';
 import useClickOutside from '../../hooks/useClickOutside';
 
 import * as Styled from './styled';
+import ActionItem from './ActionItem';
 
 const Menu = ({ header, children }) => {
+  // console.log({ children });
+
   const [open, setOpen] = useState(false);
   const list = useList({ list: children });
   const headerRef = useRef(null);
@@ -38,6 +41,7 @@ const Menu = ({ header, children }) => {
       role="menu"
       ref={containerRef}
       tabIndex="-1"
+      style={{ position: 'relative' }}
       onKeyDown={e => {
         if (e.key === 'Escape') {
           setOpen(false);
@@ -57,7 +61,11 @@ const Menu = ({ header, children }) => {
           {header}
         </Styled.Header>
       ) : (
-        header
+        React.cloneElement(header, {
+          ref: headerRef,
+          onClick: () => setOpen(!open),
+          open,
+        })
       )}
       {open && (
         <Styled.Menu onKeyDown={list.keyHandler}>
@@ -74,5 +82,14 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {};
+
+Menu.preview = {
+  children: [
+    <ActionItem>Sample 1</ActionItem>,
+    <ActionItem>Sample 2</ActionItem>,
+    <ActionItem>Sample 3</ActionItem>,
+  ],
+  header: 'Dropdown Menu',
+};
 
 export default Menu;

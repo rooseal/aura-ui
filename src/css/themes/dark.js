@@ -1,0 +1,16 @@
+export default {
+  fontFamily: 'Verdana',
+  primary: '#333',
+  primaryLight: '#444',
+  primaryDark: '#222',
+  primaryDisabled: '#777',
+  secondary: '#333',
+  secondaryLight: '#444',
+  secondaryDark: '#222',
+  backgroundHighlight: '#aaa',
+  textPrimary: '#ddd',
+  textLight: '#fff',
+  textDark: '#aaa',
+  borderPrimary: '1px solid #ccc',
+  borderRadius: 0,
+};

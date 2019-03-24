@@ -19,6 +19,11 @@ const Message = ({ show, hide, timeout = 2000, children }) => {
   // Used for transitioning the message
   const [hidden, setHidden] = useState(true);
 
+  console.log('Rendering Message');
+  console.log(
+    container === null ? 'waiting for container' : 'we have a container',
+  );
+
   useEffect(() => {
     let createdContainer = false;
     let temp;
@@ -36,7 +41,8 @@ const Message = ({ show, hide, timeout = 2000, children }) => {
       temp.style.flexDirection = 'column';
       temp.style.alignItems = 'flex-end';
 
-      // console.log(CONTAINER_PARENT);
+      console.log('Creating message container');
+      console.log(CONTAINER_PARENT);
 
       CONTAINER_PARENT.appendChild(temp);
 

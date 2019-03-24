@@ -1,7 +1,4 @@
-import TextLine from './TextLine'
-import TextArea from './TextArea'
+import TextLine from './TextLine';
+import TextArea from './TextArea';
 
-export {
-  TextLine,
-  TextArea
-}
+export { TextLine, TextArea };

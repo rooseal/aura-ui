@@ -19,4 +19,8 @@ Button.defaultProps = {
   StyledComp: StyledButton,
 };
 
+Button.preview = {
+  children: 'Sample Button',
+};
+
 export default Button;

@@ -19,4 +19,8 @@ AnchorButton.defaultProps = {
   StyledComp: StyledAnchorButton,
 };
 
+AnchorButton.preview = {
+  children: 'Clickable Text',
+};
+
 export default AnchorButton;

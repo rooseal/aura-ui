@@ -197,4 +197,8 @@ Select.defaultProps = {
   value: '',
 };
 
+Select.preview = {
+  list: ['Sample Option 1', 'Sample Option 2', 'Sample Option 3'],
+};
+
 export default Select;

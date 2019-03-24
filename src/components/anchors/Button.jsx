@@ -7,4 +7,8 @@ const ButtonAnchor = props => (
   <Anchor StyledComp={StyledButtonAnchor} {...props} />
 );
 
+ButtonAnchor.preview = {
+  children: 'Link Button',
+};
+
 export default ButtonAnchor;

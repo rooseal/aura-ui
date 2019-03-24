@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import injectSheet from 'react-jss'
-import styles from './textStyles'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { AnimBar, Container, Textarea, Label } from './styled';
 
 class TextArea extends Component {
   static propTypes = {
@@ -10,71 +10,70 @@ class TextArea extends Component {
     onChange: PropTypes.func.isRequired,
     resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
     style: PropTypes.object,
+    mask: PropTypes.func,
     label: PropTypes.string.isRequired,
-    // Passed in by injectSheet Wrapper
-    classes: PropTypes.object.isRequired,
     // Passed in by ForwardRef Wrapper
-    _ref: PropTypes.object
-  }
+    _ref: PropTypes.object,
+  };
 
   static defaultProps = {
-    resize: 'none'
-  }
+    resize: 'none',
+  };
 
   state = {
-    focused: false
-  }
+    focused: false,
+  };
 
   handleChange = event => {
-    const { mask, onChange } = this.props
-    let { value } = event.target
+    const { mask, onChange } = this.props;
+    let { value } = event.target;
 
     if (mask !== undefined) {
-      value = mask(value)
+      value = mask(value);
     }
 
-    onChange(value)
-  }
+    onChange(value);
+  };
 
-  handleFocus = event => {
+  handleFocus = () => {
     this.setState({
-      focused: true
-    })
-  }
-    
-  handleBlur = event => {
+      focused: true,
+    });
+  };
+
+  handleBlur = () => {
     this.setState({
-      focused: false
-    })
-  }
+      focused: false,
+    });
+  };
 
   render() {
-    const { focused } = this.state
-    const { name, value, style, label, classes: c, _ref, resize } = this.props
+    const { focused } = this.state;
+    const { name, value, style, label, _ref, resize } = this.props;
 
     return (
-      <div className={c.container}>
-        <div className={focused ? c.animBarFocused : c.animBarBlurred}></div>
-        <label htmlFor={name} className={!focused && value == '' ? c.labelBlurred : c.labelFocused}>
+      <Container>
+        <AnimBar className={focused ? 'active' : ''} />
+        <Label
+          htmlFor={name}
+          className={!focused && value === '' ? '' : 'active'}
+        >
           {label}
-        </label>
-        <textarea 
-          ref={_ref} 
-          id={this.props.name} 
-          className={c.input}
-          style={{...this.props.style, resize}} 
-          value={value} 
-          onFocus={this.handleFocus} 
-          onBlur={this.handleBlur} 
-          onChange={this.handleChange} 
-        /> 
-      </div>
-    )
+        </Label>
+        <Textarea
+          ref={_ref}
+          id={name}
+          style={{ ...style, resize }}
+          value={value}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+        />
+      </Container>
+    );
   }
 }
 
-const StyledComponent = injectSheet(styles)(TextArea)
-
-// We forward the ref to the TextLine using the _ref prop. 
-// This is because react-jss doesn't support the forwardRef notation at the moment
-export default React.forwardRef((props, ref) => <StyledComponent _ref={ref} {...props} />)
+export default React.forwardRef((props, ref) => (
+  <TextArea _ref={ref} {...props} />
+));

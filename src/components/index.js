@@ -2,7 +2,7 @@ import { Button, AnchorButton } from './buttons';
 import { Anchor, ButtonAnchor } from './anchors';
 import { Menu } from './menu';
 import { Select } from './select';
-import Text from './Text';
+import { TextLine, TextArea } from './text';
 
 export {
   Button,
@@ -11,5 +11,6 @@ export {
   ButtonAnchor,
   Menu,
   Select,
-  Text,
+  TextLine,
+  TextArea
 };

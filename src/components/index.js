@@ -1,16 +1,15 @@
-import { Button, Submit, StyledButton, Anchor as ButtonAnchor } from './buttons';
-import { Anchor, Button as AnchorButton, StyledAnchor, StyledButtonAnchor } from './anchors';
-import { TextLine, TextArea } from './text';
+import { Button, AnchorButton } from './buttons';
+import { Anchor, ButtonAnchor } from './anchors';
+import { Menu } from './menu';
+import { Select } from './select';
+import Text from './Text';
 
 export {
   Button,
-  Submit,
-  StyledButton,
-  ButtonAnchor,
-  Anchor,
   AnchorButton,
-  StyledAnchor,
-  StyledButtonAnchor,
-  TextLine,
-  TextArea
+  Anchor,
+  ButtonAnchor,
+  Menu,
+  Select,
+  Text,
 };

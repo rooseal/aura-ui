@@ -5,6 +5,8 @@ import { Menu } from './menu';
 import { Select } from './select';
 import Text from './Text';
 import Panel from './gui/panel/Panel';
+import { TextLine, TextArea } from './text';
+
 
 const panel = '';
 const setPanel = () => {};
@@ -133,8 +135,6 @@ const Flex = styled.div`
   }
 `;
 
-// Sample comps for gui
-
 export {
   Button,
   AnchorButton,
@@ -156,4 +156,6 @@ export {
   Subtitle,
   PanelSelector,
   PanelDisplay,
+  TextLine,
+  TextArea
 };

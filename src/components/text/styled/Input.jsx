@@ -5,10 +5,13 @@ const Input = styled.input`
   display: block;
   line-height: 1;
   margin-bottom: 0.7em;
-  padding: 0.35em 0.7em;
+  padding: 0.5em 1em;
   width: 100%;
   border: 1px solid teal;
   outline: 0;
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.fontFamily};
+
   :focus {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }

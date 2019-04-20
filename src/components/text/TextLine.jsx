@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import uuid from 'uuid/v1';
 
 import { AnimBar, Container, Input, Label } from './styled';
 
 class TextLine extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     type: PropTypes.oneOf(['text', 'password']),
     style: PropTypes.object,
@@ -18,6 +19,7 @@ class TextLine extends Component {
 
   static defaultProps = {
     type: 'text',
+    value: ''
   };
 
   state = {
@@ -49,17 +51,18 @@ class TextLine extends Component {
 
   render() {
     const { focused } = this.state;
-    const { name, value, type, style, label, _ref } = this.props;
+    const { name = uuid(), value, type, style, label, _ref } = this.props;
 
     return (
       <Container>
         <AnimBar className={focused ? 'active' : ''} />
         <Label
           htmlFor={name}
-          className={!focused && value === '' ? '' : 'active'}
+          active={focused || value !== ''}
         >
           {label}
-          <Input
+        </Label>
+        <Input
             ref={_ref}
             id={name}
             name={name}
@@ -70,7 +73,6 @@ class TextLine extends Component {
             onBlur={this.handleBlur}
             onChange={this.handleChange}
           />
-        </Label>
       </Container>
     );
   }

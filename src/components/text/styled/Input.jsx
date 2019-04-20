@@ -7,7 +7,7 @@ const Input = styled.input`
   margin-bottom: 0.7em;
   padding: 0.5em 1em;
   width: 100%;
-  border: 1px solid teal;
+  border: 1px solid ${({ theme }) => theme.primary || 'royalblue'};
   outline: 0;
   font-size: 16px;
   font-family: ${({ theme }) => theme.fontFamily};

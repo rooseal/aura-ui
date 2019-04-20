@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const AnimBar = styled.div`
-  background-color: teal;
+  background-color: ${({ theme }) => theme.primary || 'royalblue'};
   height: 5px;
   position: absolute;
   transition: width 0.5s;

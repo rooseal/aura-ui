@@ -3,7 +3,6 @@ import { Button, AnchorButton } from './buttons';
 import { Anchor, ButtonAnchor } from './anchors';
 import { Menu } from './menu';
 import { Select } from './select';
-import Text from './Text';
 import Panel from './gui/panel/Panel';
 import { TextLine, TextArea } from './text';
 
@@ -150,7 +149,6 @@ export {
   Column1,
   Column2,
   Header,
-  Text,
   GradientDiv,
   TitleSecond,
   Subtitle,

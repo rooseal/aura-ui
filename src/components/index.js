@@ -5,6 +5,7 @@ import { Menu } from './menu';
 import { Select } from './select';
 import Panel from './gui/panel/Panel';
 import { TextLine, TextArea } from './text';
+import { Tabs, Tab } from './tabs';
 
 
 const panel = '';
@@ -141,6 +142,8 @@ export {
   ButtonAnchor,
   Menu,
   Select,
+  Tabs,
+  Tab,
   Page,
   Title,
   Intro,

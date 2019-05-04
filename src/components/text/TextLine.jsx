@@ -9,6 +9,8 @@ class TextLine extends Component {
     name: PropTypes.string.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    onFocus: PropTypes.func,
     type: PropTypes.oneOf(['text', 'password']),
     style: PropTypes.object,
     mask: PropTypes.func,
@@ -19,7 +21,9 @@ class TextLine extends Component {
 
   static defaultProps = {
     type: 'text',
-    value: ''
+    value: '',
+    onBlur: () => {},
+    onFocus: () => {}
   };
 
   state = {
@@ -38,20 +42,28 @@ class TextLine extends Component {
   };
 
   handleFocus = () => {
+    const { onFocus } = this.props;
+    
     this.setState({
       focused: true,
     });
+    
+    onFocus();
   };
-
+  
   handleBlur = () => {
+    const { onBlur } = this.props;
+
     this.setState({
       focused: false,
     });
+
+    onBlur();
   };
 
   render() {
     const { focused } = this.state;
-    const { name = uuid(), value, type, style, label, _ref } = this.props;
+    const { name = uuid(), value, type, style, label, _ref, ...props } = this.props;
 
     return (
       <Container>
@@ -72,6 +84,7 @@ class TextLine extends Component {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onChange={this.handleChange}
+            { ...props }
           />
       </Container>
     );

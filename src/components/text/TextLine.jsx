@@ -28,6 +28,7 @@ class TextLine extends Component {
 
   state = {
     focused: false,
+    value: '',
   };
 
   handleChange = event => {
@@ -38,7 +39,13 @@ class TextLine extends Component {
       value = mask(value);
     }
 
-    onChange(value);
+    if (onChange === undefined) {
+      this.setState({
+        value
+      });
+    } else {
+      onChange(value);
+    }
   };
 
   handleFocus = () => {
@@ -62,8 +69,8 @@ class TextLine extends Component {
   };
 
   render() {
-    const { focused } = this.state;
-    const { name = uuid(), value, type, style, label, _ref, ...props } = this.props;
+    const { focused, stateValue } = this.state;
+    const { name = uuid(), value, type, style, label, onChange, _ref, ...props } = this.props;
 
     return (
       <Container>
@@ -75,16 +82,16 @@ class TextLine extends Component {
           {label}
         </Label>
         <Input
+            { ...props }
             ref={_ref}
             id={name}
             name={name}
             type={type}
             style={style}
-            value={value}
+            value={onChange === undefined ? stateValue : value}
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onChange={this.handleChange}
-            { ...props }
           />
       </Container>
     );

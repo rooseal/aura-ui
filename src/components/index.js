@@ -7,6 +7,7 @@ import Panel from './gui/panel/Panel';
 import { TextLine, TextArea } from './text';
 import { Tabs, Tab } from './tabs';
 import { List, useList, useSelectList } from './list';
+import Switch, { Option as SwitchOption, Container as SwitchContainer } from './switch/Switch';
 
 const panel = '';
 const setPanel = () => {};
@@ -147,6 +148,9 @@ export {
   useList,
   useSelectList,
   List,
+  Switch,
+  SwitchOption,
+  SwitchContainer,
   Page,
   Title,
   Intro,

@@ -3,11 +3,11 @@ import { Button, AnchorButton } from './buttons';
 import { Anchor, ButtonAnchor } from './anchors';
 import { Menu } from './menu';
 import { Select } from './select';
-import Panel from './gui/panel/Panel';
 import { TextLine, TextArea } from './text';
 import { Tabs, Tab } from './tabs';
 import { List, useList, useSelectList } from './list';
 import Switch, { Option as SwitchOption, Container as SwitchContainer } from './switch/Switch';
+import Panel from './panel/Panel';
 
 const panel = '';
 const setPanel = () => {};
@@ -151,6 +151,7 @@ export {
   Switch,
   SwitchOption,
   SwitchContainer,
+  Panel,
   Page,
   Title,
   Intro,

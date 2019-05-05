@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button, AnchorButton } from './buttons';
 import { Anchor, ButtonAnchor } from './anchors';
-import { Menu } from './menu';
+import { Menu, Item, ActionItem, LinkItem } from './menu';
 import { Select } from './select';
 import { TextLine, TextArea } from './text';
 import { Tabs, Tab } from './tabs';
@@ -152,6 +152,9 @@ export {
   SwitchOption,
   SwitchContainer,
   Panel,
+  Item,
+  ActionItem,
+  LinkItem,
   Page,
   Title,
   Intro,

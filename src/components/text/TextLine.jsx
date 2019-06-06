@@ -23,7 +23,7 @@ class TextLine extends Component {
     type: 'text',
     value: '',
     onBlur: () => {},
-    onFocus: () => {}
+    onFocus: () => {},
   };
 
   state = {
@@ -41,7 +41,7 @@ class TextLine extends Component {
 
     if (onChange === undefined) {
       this.setState({
-        value
+        value,
       });
     } else {
       onChange(value);
@@ -50,14 +50,14 @@ class TextLine extends Component {
 
   handleFocus = () => {
     const { onFocus } = this.props;
-    
+
     this.setState({
       focused: true,
     });
-    
+
     onFocus();
   };
-  
+
   handleBlur = () => {
     const { onBlur } = this.props;
 
@@ -69,30 +69,36 @@ class TextLine extends Component {
   };
 
   render() {
-    const { focused, stateValue } = this.state;
-    const { name = uuid(), value, type, style, label, onChange, _ref, ...props } = this.props;
+    const { focused, value: stateValue } = this.state;
+    const {
+      name = uuid(),
+      value,
+      type,
+      style,
+      label,
+      onChange,
+      _ref,
+      ...props
+    } = this.props;
 
     return (
       <Container>
         <AnimBar className={focused ? 'active' : ''} />
-        <Label
-          htmlFor={name}
-          active={focused || value !== ''}
-        >
+        <Label htmlFor={name} active={focused || value !== ''}>
           {label}
         </Label>
         <Input
-            { ...props }
-            ref={_ref}
-            id={name}
-            name={name}
-            type={type}
-            style={style}
-            value={onChange === undefined ? stateValue : value}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onChange={this.handleChange}
-          />
+          {...props}
+          ref={_ref}
+          id={name}
+          name={name}
+          type={type}
+          style={style}
+          value={onChange === undefined ? stateValue : value}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
+        />
       </Container>
     );
   }

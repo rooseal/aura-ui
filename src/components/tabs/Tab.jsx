@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import teal from '../../css/themes/teal';
+
 const TabContainer = styled.button`
   color: white;
   background-color: ${({ active, theme }) =>
@@ -21,8 +23,16 @@ const TabContainer = styled.button`
   }
 `;
 
+TabContainer.propTypes = {
+  theme: PropTypes.object,
+};
+
+TabContainer.defaultProps = {
+  theme: teal,
+};
+
 const Tab = ({ children, setState, value, active }) => (
-  <TabContainer active={active} onClick={e => setState(value)}>
+  <TabContainer active={active} onClick={() => setState(value)}>
     {children}
   </TabContainer>
 );

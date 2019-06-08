@@ -7,6 +7,7 @@ export default {
   secondary: '#802000',
   secondaryLight: '#d13400',
   secondaryDark: '#421100',
+  background: '#ddd',
   backgroundHighlight: '#eee',
   textPrimary: '#333333',
   textLight: '#666666',

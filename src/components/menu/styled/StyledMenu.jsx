@@ -5,7 +5,8 @@ import teal from '../../../css/themes/teal';
 
 const StyledMenu = styled.ul`
   border: ${({ theme }) => theme.borderPrimary};
-  background-color: ${({ theme }) => theme.secondaryLight};
+  background-color: transparent;
+  ${'' /* background-color: ${({ theme }) => theme.secondaryLight}; */}
   position: absolute;
   max-width: 250px;
   min-width: 120px;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import teal from '../../../css/themes/teal';
 
 const StyledItem = styled.li`
-  background-color: ${({ theme }) => theme.secondaryLight};
+  background-color: ${({ theme }) => theme.background};
   position: relative;
   display: block;
   border: 0;
@@ -13,8 +13,8 @@ const StyledItem = styled.li`
   padding: 2px;
 
   :last-child {
-    border-radius: 0 0 2px 2px;
-    border-bottom: 2px solid ${({ theme }) => theme.secondaryDark};
+    border-radius: 0 0 5px 5px;
+    border-bottom: 2px solid ${({ theme }) => theme.primary};
   }
 `;
 

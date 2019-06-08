@@ -6,6 +6,7 @@ import teal from '../../../css/themes/teal';
 const StyledItem = styled.button`
   background-color: transparent;
   border: 0;
+  border-radius: 5px;
   color: ${({ theme }) => theme.textPrimary};
   font-family: Verdana;
   font-size: 0.8em;

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo, useReducer } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import uuid from 'uuid/v1';
 
 // Todo: Make a seperate useKeys hook where it also accepts what element to add the eventlistener to or none to not add the function
@@ -18,6 +18,12 @@ const defaultKeymap = {
 const useList = ({ list = [], keymap: customKeymap = {} }) => {
   // Set the local list state
   const [active, setActive] = useState();
+
+  // If the list comes from a components children and we have only 1 child
+  // we don't get it as array. In that case we need to cast it to array
+  if (!Array.isArray(list)) {
+    list = [list];
+  }
 
   // An object with the refs of all the items in the list
   // We need the refs here to manage the focus of the active item

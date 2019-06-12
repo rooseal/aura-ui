@@ -18,7 +18,7 @@ const Menu = ({ header, children }) => {
     () => {
       if (!open) {
         headerRef.current.focus();
-      } else {
+      } else if (list.items.length > 0) {
         list.setActive(list.items[0].key);
       }
     },

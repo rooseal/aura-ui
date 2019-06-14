@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import teal from '../../../css/themes/teal';
 
 const StyledMenu = styled.ul`
-  border: ${({ theme }) => theme.borderPrimary};
   background-color: transparent;
   ${'' /* background-color: ${({ theme }) => theme.secondaryLight}; */}
   position: absolute;

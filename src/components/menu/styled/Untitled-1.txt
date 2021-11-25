@@ -1,0 +1,57 @@
+Ideas
+-------------------------------------------
+
+New type of input for choosing a value out of a list
+  - Established way of doing it?
+    Currently almost all sites and apps allow to select a value from a list with
+    a vertical dropdown if it are many values or radiobuttons if the options are limited
+
+  - Problems we try to solve?
+    With the vertical dropdown there is the issue that it runs out of space quickly and then
+    we need things like scrolling and searching to manage it. This leads to more steps for
+    the user to make his decision.
+    The radiobuttons are kind of okay but it makes it inconsistent for many or few options
+
+  - Goals?
+    - We want a unified way to select a value from a list. No difference between a few or many
+    values.
+    - We want the user to have to make as few steps as possible to select the value
+    - Way of least resistance (make it as easy as possible for the user)
+    - Visually pleasing solution
+  
+
+Concept 1
+--------------------------
+
+Variation of a dropdown list but instead of dropping down under the placeholder we drop 'over' the placeholder.
+
+Dropdown:
+
+The dropdown is in close position 1 itemheight long. When opened it is 4 itemheights long (items + 1 for placeholder)
+All of this extra height of 3 is going in 1 direction (down) stressing the ui thats under the dropdown.
+The user will have to move at least 1 itemheight and at most 3 itemheights
+
+  closed:                         open:
+  +--------------------+          +--------------------+          
+  |    placeholder     |          |    placeholder     |
+  +--------------------+          +--------------------+
+                                  |       item 1       |
+                                  |       item 2       |
+                                  |       item 3       |
+                                  +--------------------+
+
+Dropover:
+
+The dropover is in closed position 1 itemheight long. When opened it is 3 itemheights long (items, placeholder is covered)
+All of this extra height is going in 2 directions (up and down) spreading the extra stress over multiple places.
+The user will have to move at least 0 itemheights and at most 1 itemheight
+
+  closed:                         open:
+  
+                                  +--------------------+
+  +--------------------+          |       item 1       |
+  |    placeholder     |          |       item 2       |
+  +--------------------+          |       item 3       |
+                                  +--------------------+
+
+Conecpt 2 

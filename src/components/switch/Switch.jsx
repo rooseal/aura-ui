@@ -60,4 +60,8 @@ Switch.defaultProps = {
   },
 };
 
+Switch.preview = {
+  options: [{ text: 'On', value: true }, { text: 'Off', value: false }],
+};
+
 export default Switch;

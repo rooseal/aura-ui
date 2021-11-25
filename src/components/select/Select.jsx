@@ -20,7 +20,11 @@ const Select = ({
   closeOnSelect,
   list: dataList,
   children,
-  Styled: { Container, Header, List },
+  Styled: {
+    Container = Styled.Select,
+    Header = Styled.Header,
+    List = Styled.List,
+  } = {},
   ...props
 }) => {
   const [selectValue, setSelectValue] = useControlledState(
@@ -136,6 +140,8 @@ const Select = ({
         {typeof option === 'object' ? JSON.stringify(option) : option}
       </Option>
     ));
+
+  console.log({ Container, Header, List });
 
   return (
     <Container ref={containerRef} {...props}>
